@@ -57,14 +57,30 @@
                 return arr1;
             },
 
-            drop: function(){
-
+            //返回 array 的剩余部分
+            drop: function(arr,number){
+                if(Object.prototype.toString.call(arr) === '[object Array]'){
+                    if(arguments[1] === undefined){
+                        return arr.slice(1);
+                    }
+                    if(typeof arguments[1] !== 'number' &&  arguments[1] !== undefined){
+                        console.error('第二个参数必须为数字或者不填');
+                    }
+                    if(arguments[1] === 0){
+                        return arr;
+                    }
+                     else{
+                        return arr.slice(number);
+                    }
+                } else{
+                    console.error('第一个参数必须为数组');
+                }
+            },
+            dropRight:function(){
+                console.log(this);
             }
     };
 
-    console.log(_.chunk([1,2,3,4,5,6,7,8],3));
-    console.log(_.compact([0,'',5,9,'asd']));
-    console.log(_.difference([1,3,5,7,9],[3,7]));
 
 
 </script>
